@@ -57,6 +57,7 @@ def BuildModel(ts):
 def EvaluateModel(model,ts):
     predicted=model.fittedvalues.shift(-1)[:-1]
     actual=ts[:-1]
+    #shifting one day prediction because of common time series correlation issue
     plt.plot(actual[:20])
     plt.plot(predicted[:20], color='red')
     plt.title('RSS: %.4f'% sum((predicted-actual)**2))
